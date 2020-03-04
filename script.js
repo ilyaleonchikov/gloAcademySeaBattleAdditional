@@ -38,10 +38,13 @@ const show = {
 };
 
 const fire = (event) => {
+    // avoid counting if we click on the border of the table.
     if (event.target.tagName === 'TD') {
         const target = event.target;
-        show.miss(target);
-        play.updateData = 'shot';
+        if (target.className !== 'miss') {
+            show.miss(target);
+            play.updateData = 'shot';
+        }
     }
 };
 
